@@ -1,0 +1,34 @@
+
+/var/log/auksd.log {
+
+	missingok
+	nomail
+	nocompress
+	rotate 7
+	size 10M
+	postrotate
+    if type -p systemctl 2>&1 1>/dev/null && systemctl is-system-running 2>&1 1>/dev/null ; then
+        systemctl restart auksd
+    else
+        [ -x /etc/init.d/auksd ] && /etc/init.d/auksd restart
+    fi
+	endscript
+
+}
+
+/var/log/auksdrenewer.log {
+
+	missingok
+	nomail
+	nocompress
+	rotate 7
+	size 10M
+	postrotate
+    if type -p systemctl 2>&1 1>/dev/null && systemctl is-system-running 2>&1 1>/dev/null ; then
+        systemctl restart auksdrenewer
+    else
+        [ -x /etc/init.d/auksdrenewer ] && /etc/init.d/auksdrenewer restart
+    fi
+	endscript
+
+}
