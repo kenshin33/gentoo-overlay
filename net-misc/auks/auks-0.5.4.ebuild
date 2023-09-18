@@ -22,6 +22,10 @@ slurm? ( sys-cluster/slurm )
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/automake"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-fix-sysconfigdir.patch"
+)
+
 src_prepare() {
 	default
 	einfo "Regenerating autotools files..."
@@ -29,8 +33,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
-	append-cflags -DSYSCONFDIR=\\\"/etc/auks\\\"
 	if use slurm; then
 		myconf+="--with-slurm"
 	fi
@@ -43,4 +45,5 @@ src_install() {
 	systemd_dounit ${FILESDIR}/*.service
 	insinto /etc/logrotate.d
 	newins ${FILESDIR}/${PN}.logrotate ${PN}
+	keepdir /etc/auks
 }

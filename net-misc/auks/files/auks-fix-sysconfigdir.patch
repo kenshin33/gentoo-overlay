@@ -1,0 +1,11 @@
+--- auks-0.5.4/src/api/auks/auks_engine.h	2023-09-18 18:02:02.513460826 -0400
++++ auks-0.5.4/src/api/auks/auks_engine.h.new	2023-09-18 18:01:11.082734211 -0400
+@@ -76,7 +76,7 @@
+ #endif
+ 
+ #ifndef SYSCONFDIR
+-#define SYSCONFDIR "/etc"
++#define SYSCONFDIR "/etc/auks"
+ #endif
+ 
+ #ifndef LOCALSTATEDIR
