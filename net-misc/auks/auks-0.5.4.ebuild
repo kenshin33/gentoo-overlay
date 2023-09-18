@@ -8,7 +8,7 @@ inherit autotools systemd flag-o-matic
 DESCRIPTION="Kerberos credential support for batch environments"
 HOMEPAGE="https://github.com/cea-hpc/auks"
 
-SRC_URI="https://github.com/cea-hpc/auks/archive/refs/tags/${PV}.tar.gz"
+SRC_URI="https://github.com/cea-hpc/auks/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CeCILL-C"
 SLOT="0"
