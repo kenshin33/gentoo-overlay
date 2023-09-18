@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools systemd flag-o-matic
+inherit autotools systemd
 
 DESCRIPTION="Kerberos credential support for batch environments"
 HOMEPAGE="https://github.com/cea-hpc/auks"
