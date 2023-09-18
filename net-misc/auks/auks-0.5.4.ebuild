@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/automake"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-fix-sysconfigdir.patch"
+	"${FILESDIR}"/${PN}-fix-sysconfigdir.patch
 )
 
 src_prepare() {
@@ -42,8 +42,8 @@ src_configure() {
 
 src_install() {
 	default
-	systemd_dounit ${FILESDIR}/*.service
+	systemd_dounit "${FILESDIR}"/*.service
 	insinto /etc/logrotate.d
-	newins ${FILESDIR}/${PN}.logrotate ${PN}
+	newins "${FILESDIR}"/${PN}.logrotate ${PN}
 	keepdir /etc/auks
 }
