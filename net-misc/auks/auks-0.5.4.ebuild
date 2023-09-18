@@ -13,7 +13,7 @@ SRC_URI="https://github.com/cea-hpc/auks/archive/refs/tags/${PV}.tar.gz"
 LICENSE="CeCILL-C"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+slurm +systemd"
+IUSE="+slurm"
 
 RDEPEND="
 >=app-crypt/mit-krb5-1.18
