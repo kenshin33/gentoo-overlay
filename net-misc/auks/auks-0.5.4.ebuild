@@ -2,21 +2,24 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools systemd flag-o-matic
+
 DESCRIPTION="Kerberos credential support for batch environments"
 HOMEPAGE="https://github.com/hautreux/auks"
-#SRC_URI="https://github.com/hautreux/auks/archive/${PV}.tar.gz"
+
 SRC_URI="https://github.com/cea-hpc/auks/archive/refs/tags/${PV}.tar.gz"
+
 LICENSE=""
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+slurm +systemd"
 
-DEPEND="
+RDEPEND="
 >=app-crypt/mit-krb5-1.18
 slurm? ( sys-cluster/slurm )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/automake"
 
 PATCHES=(
@@ -46,7 +49,4 @@ src_install() {
 	fi
 	insinto /etc/logrotate.d
 	newins ${FILESDIR}/${PN}.logrotate ${PN}
-	#insinto /etc/${PN}
-	#doins ${WORKDIR}/${P}/etc/*.example
-
 }
