@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/hautreux/auks"
 
 SRC_URI="https://github.com/cea-hpc/auks/archive/refs/tags/${PV}.tar.gz"
 
-LICENSE=""
+LICENSE="CeCILL-C"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+slurm +systemd"
