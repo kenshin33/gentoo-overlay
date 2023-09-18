@@ -46,4 +46,5 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/${PN}.logrotate ${PN}
 	keepdir /etc/auks
+	find "${ED}" -type f -name '*.la' -delete || die
 }
