@@ -1,0 +1,12 @@
+[Unit]
+Description=Auks ccache from keytab scripted daemon
+After=network.target
+
+[Service]
+Type=forking
+EnvironmentFile=-/etc/conf.d/aukspriv
+ExecStart=/usr/sbin/aukspriv $AUKSPRIV_OPTIONS
+GuessMainPID=true
+
+[Install]
+WantedBy=multi-user.target

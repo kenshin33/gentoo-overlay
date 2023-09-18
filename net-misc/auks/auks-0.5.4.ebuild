@@ -22,10 +22,6 @@ slurm? ( sys-cluster/slurm )
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/automake"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-fix-service-files.patch"
-)
-
 src_prepare() {
 	default
 	einfo "Regenerating autotools files..."
@@ -44,9 +40,7 @@ src_configure() {
 
 src_install() {
 	default
-	if use systemd; then
-		systemd_dounit ${FILESDIR}/*.service
-	fi
+	systemd_dounit ${FILESDIR}/*.service
 	insinto /etc/logrotate.d
 	newins ${FILESDIR}/${PN}.logrotate ${PN}
 }

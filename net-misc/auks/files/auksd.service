@@ -1,0 +1,14 @@
+[Unit]
+Description=Auks External Kerberos Credential Support Daemon
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/conf.d/auksd
+ExecStart=/usr/sbin/auksd -F $AUKSPRIV_OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+LimitNOFILE=32768
+
+[Install]
+WantedBy=multi-user.target

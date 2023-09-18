@@ -1,0 +1,14 @@
+[Unit]
+Description=Auks Credentials Renewer Daemon
+After=network.target
+Wants=aukspriv.service
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/conf.d/auksdrenewer
+ExecStart=/usr/sbin/auksdrenewer -F $AUKSDRENEWER_OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
