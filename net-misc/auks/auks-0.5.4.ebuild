@@ -13,11 +13,12 @@ SRC_URI="https://github.com/cea-hpc/auks/archive/refs/tags/v${PV}.tar.gz -> ${P}
 LICENSE="CeCILL-C"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+slurm"
+IUSE="+slurm pam"
 
 RDEPEND="
 >=app-crypt/mit-krb5-1.18
 slurm? ( sys-cluster/slurm )
+pam? ( sys-libs/pam )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/automake"
@@ -33,8 +34,13 @@ src_prepare() {
 }
 
 src_configure() {
+	local myconf
+	#neither --without-pam nor --without-slurm does what they're supposed to
 	if use slurm; then
 		myconf+="--with-slurm"
+	fi
+	if use pam; then
+		myconf+="--with-pam"
 	fi
 	econf \
 		${myconf}
